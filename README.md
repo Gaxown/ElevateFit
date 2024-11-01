@@ -51,7 +51,8 @@ Nous recherchons un développeur Front-end compétent pour rendre le site **Elev
 
 4. **Images adaptatives et optimisées :**
    - Utilisez des images adaptatives avec la balise `<img srcset>` pour garantir une qualité optimale.
-   - Compressez les images pour réduire la taille des fichiers tout en maintenant une qualité visuelle élevée.
+   - Compressez les images pour réduire la taille des
+   iers tout en maintenant une qualité visuelle élevée.
 
 5. **Conformité aux normes d'accessibilité :**
    - Assurez-vous que le site respecte les normes WCAG (Web Content Accessibility Guidelines) pour une expérience inclusive.

@@ -1,0 +1,270 @@
+<html>
+
+<head>
+    <title>Shopping Cart</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header img {
+            height: 50px;
+        }
+
+        .header nav {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .header .cart {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+
+        .header .cart i {
+            margin-left: 10px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .cart-table th {
+            background-color: #ff5733;
+            color: white;
+        }
+
+        .cart-table td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-table img {
+            width: 100px;
+        }
+
+        .cart-table .remove {
+            color: red;
+            cursor: pointer;
+        }
+
+        .summary {
+            float: right;
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        .summary table {
+            width: 100%;
+        }
+
+        .summary table td {
+            padding: 5px 0;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .footer .footer-content div {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer .footer-content img {
+            width: 150px;
+        }
+
+        .footer .footer-content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .footer-content .social-icons i {
+            margin: 0 10px;
+        }
+
+        .footer .footer-bottom {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header nav {
+                display: none;
+            }
+
+            .header .cart {
+                position: static;
+                margin-top: 10px;
+            }
+
+            .summary {
+                float: none;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .footer .footer-content div {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cart-table img {
+                width: 50px;
+            }
+
+            .cart-table th,
+            .cart-table td {
+                padding: 5px;
+            }
+
+            .summary table td {
+                padding: 2px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img alt="Elevate Fit Logo" height="50" src="" width="100" />
+        <nav>
+            <a href="#">HOME</a>
+            <a href="#">SHOPE</a>
+            <a href="#">ABOUT</a>
+            <a href="#">CONTACT US</a>
+        </nav>
+        <div class="cart">
+            $230
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </div>
+    <div class="container">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="cart">
+
+                <!-- <tr>
+                    <td>
+                        <img alt="Red Printed Tshirt" height="100" src="./images/gallery-1.jpg" width="100" />
+                        <div>
+                            Red Printed Tshirt
+                            <br />
+                            Price: $75.00
+                            <br />
+                            <span class="remove">Remove</span>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="number" value="1" />
+                    </td>
+                    <td>$75.00</td>
+                </tr> -->
+            </tbody>
+        </table>
+        <div class="summary">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td id="subTotal">$200.00</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td id="tax">$30.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td id="totalPrice">$230.00</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Download Our App</h3>
+                <p>Download App for Android and iOS mobile phone.</p>
+                <img alt="Google Play" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/v0PKEj7eBHXzXCVhyBTNl8grHNlfeTwyLy2NqCf5p9bIWrxOB.jpg"
+                    width="150" />
+                <img alt="App Store" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/bfeqCFuaTeG3UJCf0sSc3ueZwft8ScEXTMccl0xuhuVYZtG7E.jpg"
+                    width="150" />
+            </div>
+            <div>
+                <img alt="Elevate Fit Logo" height="50" src="" width="150" />
+                <p>Our purpose is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.</p>
+            </div>
+            <div>
+                <h3>Useful Links</h3>
+                <a href="#">Coupons</a><br />
+                <a href="#">Blog Post</a><br />
+                <a href="#">Return Policy</a><br />
+                <a href="#">Join Affiliate</a>
+            </div>
+            <div>
+                <h3>Follow Us</h3>
+                <a href="#">Facebook</a><br />
+                <a href="#">Twitter</a><br />
+                <a href="#">Instagram</a><br />
+                <a href="#">Youtube</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright 2020 - Made with <span style="color: red;">❤</span> LorenzCipher</p>
+        </div>
+    </div>
+</body>
+<script src="./js/cart.js"></script>
+
+</html>
