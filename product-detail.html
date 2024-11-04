@@ -55,42 +55,90 @@
 
     <div class="small-container single-product">
         <div class="row">
-
-            <div class="col-2">
-                <img src="" width="100%" id="productImage">
-
-                <div class="small-img-row">
+            <!-- <div class="details-wrapper">
+                <div class="imgs">
+                    <img src="" max-width="100%" id="productImage">
 
                     <div class="small-img-col">
-                        <img id="img-0" src="" width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img id="img-1" src="" width="100%" class="small-img">
-                    </div>
 
-                    <div class="small-img-col">
-                        <img id="img-2" src="" width="100%" class="small-img">
-                    </div>
+                        <div class="small-img-col">
+                            <img id="img-0" src="" width="100%" class="small-img">
+                        </div>
+                        <div class="small-img-col">
+                            <img id="img-1" src="" width="100%" class="small-img">
+                        </div>
 
-                    <div class="small-img-col">
-                        <img id="img-3" src="" width="100%" class="small-img">
-                    </div>
+                        <div class="small-img-col">
+                            <img id="img-2" src="" width="100%" class="small-img">
+                        </div>
 
-                    <div class="small-img-col">
-                        <img id="img-4" src="" width="100%" class="small-img">
+                        <div class="small-img-col">
+                            <img id="img-3" src="" width="100%" class="small-img">
+                        </div>
+
+                        <div class="small-img-col">
+                            <img id="img-4" src="" width="100%" class="small-img">
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+                <div class="col-2">
+                    <p>Home/ T-Shirt</p>
+                    <h1 id="productTitle">Red Printed T-Shirt by HRX</h1>
+                    <h4 id="productPrice">$50.00</h4>
 
-            <!--column related to the text of single product-->
+                    
+                    <select>
+                        <option>Select Size</option>
+                        <option>XXL</option>
+                        <option>XL</option>
+                        <option>Large</option>
+                        <option>Medium</option>
+                        <option>>Small</option>
+                    </select>
+
+                    <input id="quantity" type="number" value="1" min="1" style="appearance: auto;">
+                    <button href="" class="btn addToCart">Add To Cart</button>
+                    <h3>Product Details <i class="fa fa-indent" aria-hidden="true"></i></h3>
+                    <br>
+                    <p>Give Your summer wardrobe a style upgrade with the HTX Men's
+                        Active T-shirt. Team it with a pair of shorts for your morning
+                        Workout or a denims for an evening out with the guys.
+                    </p>
+                </div>
+            </div> -->
+        </div>
+        <div class="details-wrapper">
+            <div class="sidebar">
+                <img class="small-img" id="img-0" alt="Shoe image 1" height="60" src="" width="60" />
+                <img class="small-img" id="img-1" alt="Shoe image 2" height="60" src="" width="60" />
+                <img class="small-img" id="img-2" alt="Shoe image 3" height="60" src="" width="60" />
+                <img class="small-img" id="img-3" alt="Shoe image 4" height="60" src="" width="60" />
+                <img class="small-img" id="img-4" alt="Shoe image 5" height="60" src="" width="60" />
+                <!-- <img class="small-img" id="img-5" alt="Shoe image 6" height="60" src="" width="60" />
+                <img class="small-img" id="img-6" alt="Shoe image 7" height="60" src="" width="60" /> -->
+            </div>
+            <div class="main-content">
+                <img id="productImage" alt="Main shoe image" height="400" src="" width="600" />
+                <div class="navigation">
+                    <button>
+                        <i class="fas fa-chevron-left">
+                        </i>
+                    </button>
+                    <button>
+                        <i class="fas fa-chevron-right">
+                        </i>
+                    </button>
+                </div>
+            </div>
             <div class="col-2">
                 <p>Home/ T-Shirt</p>
                 <h1 id="productTitle">Red Printed T-Shirt by HRX</h1>
                 <h4 id="productPrice">$50.00</h4>
 
-                <!--sizes selection-->
+
                 <select>
                     <option>Select Size</option>
                     <option>XXL</option>
@@ -100,9 +148,8 @@
                     <option>>Small</option>
                 </select>
 
-                <!--no of products-->
                 <input id="quantity" type="number" value="1" min="1" style="appearance: auto;">
-                <button href="" class="btn addToCart">Add To Cart</button><!--add to cart button-->
+                <button href="" class="btn addToCart">Add To Cart</button>
                 <h3>Product Details <i class="fa fa-indent" aria-hidden="true"></i></h3>
                 <br>
                 <p>Give Your summer wardrobe a style upgrade with the HTX Men's
@@ -240,7 +287,7 @@
 
 
     <script src="js/script.js"></script>
-    <script src="js/details.js"></script>
+    <script type="module" src="js/details.js"></script>
 
 </body>
 

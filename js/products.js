@@ -1,18 +1,24 @@
-products = document.querySelectorAll('.card');
-productArray = []
+// import { addToCartLocalStorage } from './details.js';
+ 
+// products = document.querySelectorAll('.card');
+// productArray = []
 let index = 0
 
 //dataextracted from the  original webiste
 // data = '[{"id":1,"img":"http://127.0.0.1:5503/images/Nike/product%201/product.png","title":"Red Printed T-shirt","category":"Men","price":250,"stars":2.5},{"id":2,"img":"http://127.0.0.1:5503/images/Nike/product%202/product.png","title":"TEST","category":"Women","price":100,"stars":4.5},{"id":3,"img":"http://127.0.0.1:5503/images/Nike/product%203/product.png","title":"Red Printed T-shirt","category":"Men","price":200,"stars":4.5},{"id":4,"img":"http://127.0.0.1:5503/images/Nike/product%204/product.png","title":"Red Printed T-shirt","category":"Women","price":1459,"stars":4.5},{"id":5,"img":"http://127.0.0.1:5503/images/Nike/product%205/product.png","title":"Red Printed T-shirt","category":"Men","price":1119,"stars":4},{"id":6,"img":"http://127.0.0.1:5503/images/Nike/product%206/product.png","title":"Red Printed T-shirt","category":"Men","price":750,"stars":4},{"id":7,"img":"http://127.0.0.1:5503/images/Nike/product%207/product.png","title":"Red Printed T-shirt","category":"Women","price":460,"stars":3.5},{"id":8,"img":"http://127.0.0.1:5503/images/Nike/product%208/product.png","title":"Red Printed T-shirt","category":"Men","price":1299,"stars":4.5},{"id":9,"img":"http://127.0.0.1:5503/images/Nike/product%209/product.png","title":"Red Printed T-shirt","category":"Men","price":200,"stars":4},{"id":10,"img":"http://127.0.0.1:5503/images/Nike/product%2010/product.png","title":"Red Printed T-shirt","category":"Men","price":430,"stars":4},{"id":11,"img":"http://127.0.0.1:5503/images/Nike/product%2011/product.png","title":"Red Printed T-shirt","category":"Men","price":600,"stars":3.5},{"id":12,"img":"http://127.0.0.1:5503/images/Nike/product%2012/product.png","title":"Red Printed T-shirt","category":"Men","price":959,"stars":4.5}]'
 // Data with multiple categories
-data = '[{"id":1,"img":"http://127.0.0.1:5503/images/Nike/product%201/product.png","title":"Red Printed T-shirt","categories":["Men", "Airforce"],"price":250,"stars":2.5},{"id":2,"img":"http://127.0.0.1:5503/images/Nike/product%202/product.png","title":"TEST","categories":["Women", "Dunk"],"price":100,"stars":4.5},{"id":3,"img":"http://127.0.0.1:5503/images/Nike/product%203/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":200,"stars":4.5},{"id":4,"img":"http://127.0.0.1:5503/images/Nike/product%204/product.png","title":"Red Printed T-shirt","categories":["Women", "Airforce"],"price":1459,"stars":4.5},{"id":5,"img":"http://127.0.0.1:5503/images/Nike/product%205/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":1119,"stars":4},{"id":6,"img":"http://127.0.0.1:5503/images/Nike/product%206/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":750,"stars":4},{"id":7,"img":"http://127.0.0.1:5503/images/Nike/product%207/product.png","title":"Red Printed T-shirt","categories":["Women", "Airforce"],"price":460,"stars":3.5},{"id":8,"img":"http://127.0.0.1:5503/images/Nike/product%208/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":1299,"stars":4.5},{"id":9,"img":"http://127.0.0.1:5503/images/Nike/product%209/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":200,"stars":4},{"id":10,"img":"http://127.0.0.1:5503/images/Nike/product%2010/product.png","title":"Red Printed T-shirt","categories":["Men", "Airforce"],"price":430,"stars":4},{"id":11,"img":"http://127.0.0.1:5503/images/Nike/product%2011/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":600,"stars":3.5},{"id":12,"img":"http://127.0.0.1:5503/images/Nike/product%2012/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":959,"stars":4.5}]'
+const data = '[{"id":1,"img":"http://127.0.0.1:5503/images/Nike/product%201/product.png","title":"Red Printed T-shirt","categories":["Men", "Airforce"],"price":250,"stars":2.5},{"id":2,"img":"http://127.0.0.1:5503/images/Nike/product%202/product.png","title":"TEST","categories":["Women", "Dunk"],"price":100,"stars":4.5},{"id":3,"img":"http://127.0.0.1:5503/images/Nike/product%203/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":200,"stars":4.5},{"id":4,"img":"http://127.0.0.1:5503/images/Nike/product%204/product.png","title":"Red Printed T-shirt","categories":["Women", "Airforce"],"price":1459,"stars":4.5},{"id":5,"img":"http://127.0.0.1:5503/images/Nike/product%205/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":1119,"stars":4},{"id":6,"img":"http://127.0.0.1:5503/images/Nike/product%206/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":750,"stars":4},{"id":7,"img":"http://127.0.0.1:5503/images/Nike/product%207/product.png","title":"Red Printed T-shirt","categories":["Women", "Airforce"],"price":460,"stars":3.5},{"id":8,"img":"http://127.0.0.1:5503/images/Nike/product%208/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":1299,"stars":4.5},{"id":9,"img":"http://127.0.0.1:5503/images/Nike/product%209/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":200,"stars":4},{"id":10,"img":"http://127.0.0.1:5503/images/Nike/product%2010/product.png","title":"Red Printed T-shirt","categories":["Men", "Airforce"],"price":430,"stars":4},{"id":11,"img":"http://127.0.0.1:5503/images/Nike/product%2011/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":600,"stars":3.5},{"id":12,"img":"http://127.0.0.1:5503/images/Nike/product%2012/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":959,"stars":4.5}]'
 
 localStorage.setItem("productDetails", data)
 
 /** */
-previousCartPrice = localStorage.getItem('totalPrice') ? parseFloat(localStorage.getItem('totalPrice')).toFixed(2) : 0
-totalArticles = localStorage.getItem('totalArticles') ? parseInt(localStorage.getItem('totalArticles')) : 0
+let totalPrice = parseFloat(localStorage.getItem('totalPrice')).toFixed(2)
+let previousCartPrice = localStorage.getItem('totalPrice') ? totalPrice : 0
+// totalArticles = localStorage.getItem('totalArticles') ? parseInt(localStorage.getItem('totalArticles')) : 0
+let totalArticles = parseInt(localStorage.getItem('totalArticles')) || 0; // Initialize total articles
+let cartItems = JSON.parse(localStorage.getItem('cart') || '[]')
 document.querySelector('#totalPrice').innerHTML = `$${previousCartPrice}`
+document.querySelector('#totalArticles').innerHTML = `(${totalArticles})`
 
 
 
@@ -53,33 +59,224 @@ getCategory = () => {
 // }
 
 
+/** 
 addToCartHandling = () => {
-    // Select all buy and remove buttons
     const buyButtons = document.querySelectorAll('.buy');
     const removeButtons = document.querySelectorAll('.remove');
     const bottomElements = document.querySelectorAll('.bottom');
     
-    // Add click event listener to each buy button
+
     buyButtons.forEach((buyButton, index) => {
-        buyButton.addEventListener('click', function() {
+        buyButton.addEventListener('click', () => {
             bottomElements[index].classList.add('clicked');
+            const product = products[index];
+            productId =  product.id;
+            totalPrice = localStorage.getItem('totalPrice') ? parseFloat(localStorage.getItem('totalPrice')) : 0
+            totalPrice +=  parseFloat(product.price);
+
+            const cartItem = cartItems.find(item => item.id == productId)
+            if (cartItem) {
+                quantity = parseInt(cartItem.quantity) + 1
+                cartItem.quantity = quantity.toString()
+            }
+            else 
+                cartItems.push({ id: productId.toString(), quantity: '1' });
+            document.querySelector('#totalArticles').innerHTML = `(${++totalArticles})`
+            document.querySelector('#totalPrice').innerHTML = `$${totalPrice}`
+            localStorage.setItem('totalPrice',  JSON.stringify(totalPrice))
+            localStorage.setItem('totalArticles',  JSON.stringify(totalArticles))
+            localStorage.setItem('cart',  JSON.stringify(cartItems))
         });
     });
     
-    // Add click event listener to each remove button
     removeButtons.forEach((removeButton, index) => {
-        removeButton.addEventListener('click', function() {
+        removeButton.addEventListener('click', () => {
             bottomElements[index].classList.remove('clicked');
+            id =  index + 1 
+            const product = products.find(product => product.id == id)
+            console.log(product)
+            const cartItem = cartItems.find(item => item.id == product.id)
+            quantity = parseInt(cartItem.quantity) - 1
+            if (quantity == 0) {
+                console.log(cartItems)
+                cartItems.splice(cartItems.indexOf(cartItem), 1)
+            }
+            else 
+                cartItem.quantity = quantity.toString()
+            console.log(cartItems)
+            localStorage.setItem('cart',  JSON.stringify(cartItems))
         });
     });
 }
 
+/** */
+
+/**
+ * 
+
+addToCartHandling = () => {
+    const buyButtons = document.querySelectorAll('.buy');
+    const removeButtons = document.querySelectorAll('.remove');
+    const bottomElements = document.querySelectorAll('.bottom');
+
+    buyButtons.forEach((buyButton, index) => {
+        buyButton.addEventListener('click', () => {
+            bottomElements[index].classList.add('clicked');
+            const product = products[index];
+            const productId = product.id;
+            let totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0; // Default to 0 if not set
+            totalPrice += parseFloat(product.price); // Add the product price
+
+            const cartItem = cartItems.find(item => item.id == productId);
+            if (cartItem) {
+                let quantity = parseInt(cartItem.quantity) + 1;
+                cartItem.quantity = quantity.toString();
+            } else {
+                cartItems.push({ id: productId.toString(), quantity: '1' });
+            }
+
+            // Update total articles
+            totalArticles++;
+            document.querySelector('#totalArticles').innerHTML = `(${totalArticles})`;
+            document.querySelector('#totalPrice').innerHTML = `$${totalPrice.toFixed(2)}`; // Update UI
+
+            // Store updated values in local storage
+            localStorage.setItem('totalPrice', totalPrice.toFixed(2)); // Store total price as a string
+            localStorage.setItem('totalArticles', totalArticles.toString()); // Store total articles as a string
+            localStorage.setItem('cart', JSON.stringify(cartItems)); // Store cart items
+        });
+    });
+
+    removeButtons.forEach((removeButton, index) => {
+        removeButton.addEventListener('click', () => {
+            bottomElements[index].classList.remove('clicked');
+            const product = products[index];
+            const cartItem = cartItems.find(item => item.id == product.id);
+            if (cartItem) {
+                let quantity = parseInt(cartItem.quantity) - 1;
+                if (quantity <= 0) {
+                    cartItems.splice(cartItems.indexOf(cartItem), 1); // Remove item from cart
+                } else {
+                    cartItem.quantity = quantity.toString(); // Update quantity
+                }
+            }
+
+            // Update total price and articles
+            let totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0; // Default to 0 if not set
+            totalPrice -= parseFloat(product.price); // Subtract the product price
+            totalArticles--; // Decrement total articles
+
+            // Update UI
+            document.querySelector('#totalArticles').innerHTML = `(${totalArticles})`;
+            document.querySelector('#totalPrice').innerHTML = `$${totalPrice.toFixed(2)}`; // Update UI
+
+            // Store updated values in local storage
+            localStorage.setItem('totalPrice', totalPrice.toFixed(2)); // Store total price as a string
+            localStorage.setItem('totalArticles', totalArticles.toString()); // Store total articles as a string
+            localStorage.setItem('cart', JSON.stringify(cartItems)); // Store cart items
+        });
+    });
+}
+ */
+
+totalArticles = parseInt(localStorage.getItem('totalArticles')) || 0; // Initialize total articles
+cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart items from local storage
+
+const addToCartHandling = () => {
+    const buyButtons = document.querySelectorAll('.buy');
+    const removeButtons = document.querySelectorAll('.remove');
+    const bottomElements = document.querySelectorAll('.bottom');
+
+    // Initialize totalPrice and totalArticles from local storage
+    let totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0;
+    let totalArticles = parseInt(localStorage.getItem('totalArticles')) || 0;
+
+    buyButtons.forEach((buyButton, index) => {
+        buyButton.addEventListener('click', () => {
+            bottomElements[index].classList.add('clicked');
+            const product = products[index]; // Assuming `products` is defined and contains your product data
+            const productId = product.id;
+
+            // Add product price to totalPrice
+            totalPrice += parseFloat(product.price);
+
+            const cartItem = cartItems.find(item => item.id == productId);
+            if (cartItem) {
+                let quantity = parseInt(cartItem.quantity) + 1;
+                cartItem.quantity = quantity.toString();
+            } else {
+                cartItems.push({ id: productId.toString(), quantity: '1' });
+            }
+
+            // Update total articles
+            totalArticles++;
+            updateUI(totalArticles, totalPrice); // Update UI with new totals
+
+            // Store updated values in local storage
+            saveToLocalStorage(totalPrice, totalArticles, cartItems);
+        });
+    });
+
+    removeButtons.forEach((removeButton, index) => {
+        removeButton.addEventListener('click', () => {
+            bottomElements[index].classList.remove('clicked');
+            const product = products[index]; // Get the product associated with the remove button
+            const cartItemIndex = cartItems.findIndex(item => item.id == product.id); // Find the index of the cart item
+
+            if (cartItemIndex !== -1) {
+                const cartItem = cartItems[cartItemIndex]; // Get the cart item
+                const itemPrice = parseFloat(product.price);
+                const itemQuantity = parseInt(cartItem.quantity);
+
+                // Subtract the total price of the item from totalPrice
+                totalPrice -= itemPrice * itemQuantity; 
+                totalArticles -= itemQuantity; // Decrement total articles by the quantity
+
+                cartItems.splice(cartItemIndex, 1); // Remove the item from the cart
+            }
+
+            // Ensure totalPrice and totalArticles are not negative
+            totalPrice = Math.max(totalPrice, 0);
+            totalArticles = Math.max(totalArticles, 0);
+
+            // Update UI
+            updateUI(totalArticles, totalPrice); // Update UI with new totals
+
+            // Store updated values in local storage
+            saveToLocalStorage(totalPrice, totalArticles, cartItems);
+        });
+    });
+}
+
+// Function to update the UI
+const updateUI = (totalArticles, totalPrice) => {
+    document.querySelector('#totalArticles').innerHTML = `(${totalArticles})`;
+    document.querySelector('#totalPrice').innerHTML = `$${totalPrice.toFixed(2)}`; // Update UI
+}
+
+// Function to save updated values to local storage
+const saveToLocalStorage = (totalPrice, totalArticles, cartItems) => {
+    localStorage.setItem('totalPrice', totalPrice.toFixed(2)); // Store total price as a string
+    localStorage.setItem('totalArticles', totalArticles.toString()); // Store total articles as a string
+    localStorage.setItem('cart', JSON.stringify(cartItems)); // Store cart items
+}
+
+// Call the function to set up event listeners
+addToCartHandling();
+
+// Example usage
+// To add an item
+// addToCartHandling('add', productId, quantityValue);
+
+// To remove an item
+// addToCartHandling('remove', productId);
+
+//
 
 function renderProducts(SortingParameter = 'default', category = 'All', min = 0,  max = 3000) {
-
+    products = JSON.parse(data)
     // container = document.querySelector('#products-container')
     container = document.querySelector('#test')
-    products = JSON.parse(data)
     SortingParameter = getSortingParameter()
     //Category & Price Range
   filtered = products.filter(product => product.price >= min && product.price <= max && (category === 'All' || product.categories.includes(category)))
@@ -89,12 +286,7 @@ function renderProducts(SortingParameter = 'default', category = 'All', min = 0,
     else if (SortingParameter == 'price'){
         filtered.sort((a, b) => b.price - a.price)
     }
-/*
-console.log(`parameter: ${SortingParameter}`)
-console.log(`min: ${min} || max = ${max}`)
-console.log(`category: ${category}`)
-console.log(filtered.map(x => x.price))
-*/
+
 
 
  
@@ -131,14 +323,20 @@ console.log(filtered.map(x => x.price))
     //         <div class="price">$${elem.price}</div>
     //     </div>
     // `;
-    container.innerHTML += `    <div class="wrapper">
+    const item = cartItems.find(item => item.id == elem.id)
+    container.innerHTML += `<div class="wrapper" id="${elem.id}">
         <div class="container" style="padding:0">
+    <div class="wishlistButton">
+        <input id="toggle-heart-${elem.id}" type="checkbox">
+        <label for="toggle-heart-${elem.id}" aria-label="like">❤</label>
+        <span>Add to wishlist</span>
+    </div>
             <div class="top">
                 <img class="productImg" src="${elem.img}" alt="">
             </div>
-            <div class="bottom">
+            <div class="bottom ${item ? 'clicked' : ''}">
                 <div class="left">
-                    <div class="details" style="padding-right:0">
+                    <div class="details">
                         <span class="productTitle" id="${elem.id}">${elem.title}</span>
                         <p>£ ${elem.price}</p>
                         <div class="rating">${starsHtml}</div>
@@ -165,8 +363,8 @@ console.log(filtered.map(x => x.price))
 
                     </div>
                     <div class="details">
-                        <span style="color:black">${elem.title}</span>
-                        <p>Added to your cart</p>
+                        <span class="productTitle" id="${elem.id}" style="color:black; padding:0">${elem.title}</span>
+                        <p>Added to your cart ${item ? `(${item.quantity})` : ''}</p>
                         <span style="color:black">£ ${elem.price}</span>
                     </div>
                     <div class="remove">
@@ -379,7 +577,6 @@ categories.forEach(categoryElem => {
     categoryElem.addEventListener('click', (e) => {
         categories.forEach(item => item.classList.remove('active'))
         e.target.classList.add('active')
-        // console.log(getCategory())
         category = getCategory()
         range = getPriceRange()
         parameter = getSortingParameter()
@@ -411,13 +608,63 @@ document.querySelector('#filter').addEventListener('change', (e) => {
 
 
 
+// Heart Animation 
+
+// document.querySelector('.heart').addEventListener('click',  (e) => e.target.toggle("is-active"))
 
 
 
+// document.addEventListener('DOMContentLoaded', () => {
+//     const wishlistButtons = document.querySelectorAll('.wishlistButton');
 
+//     wishlistButtons.forEach(button => {
+//         const checkbox = button.querySelector('input[type="checkbox"]');
+//         const label = button.querySelector('label');
 
+//         checkbox.addEventListener('change', () => {
+//             // Change the color of the clicked heart
+//             if (checkbox.checked) {
+//                 label.style.color = '#e2264d';
+//                 console.log(e.target.id)
+//                 console.log("dsfskjdfkl")
+//             } else {
+//                 label.style.color = '#888';
+//             }
+//         });
+//     });
+// });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const wishlistButtons = document.querySelectorAll('.wishlistButton');
+    let selectedItems = JSON.parse(localStorage.getItem('wishlistItems')) || []; // Retrieve existing items from localStorage
 
+    wishlistButtons.forEach(button => {
+        const checkbox = button.querySelector('input[type="checkbox"]');
+        const label = button.querySelector('label');
+        const productId = parseInt(button.closest('.wrapper').id); // Get the product ID
+
+        // Check if the product is already in the wishlist
+        if (selectedItems.includes(productId)) {
+            checkbox.checked = true; // Set checkbox to checked if already in wishlist
+            label.style.color = '#e2264d'; // Set label color to red
+        }
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                label.style.color = '#e2264d'; // Change color to red
+                if (!selectedItems.includes(productId)) {
+                    selectedItems.push(productId); // Add product ID to the array
+                }
+            } else {
+                label.style.color = '#888'; // Reset color if unchecked
+                selectedItems = selectedItems.filter(id => id !== productId); // Remove product ID from the array
+            }
+
+            // Save the updated array to localStorage
+            localStorage.setItem('wishlistItems', JSON.stringify(selectedItems));
+        });
+    });
+});
 
 
 

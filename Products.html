@@ -16,8 +16,45 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---- icon cdn link---->
+    <style>
+        .wishlistButton {
+            position: absolute;
+            width: 60%;
+            padding: 0 15px;
+            margin: 10px;
+            border: 1px solid black;
+            background-color: #121721;
+            color: bisque;
+            border-radius: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
 
+        .wishlistButton input[type="checkbox"] {
+            position: absolute;
+            left: -100vw;
+            /* Hide the checkbox */
+        }
 
+        .wishlistButton label {
+            color: #888;
+            font-size: 2em;
+            filter: grayscale(0.8);
+            user-select: none;
+            cursor: pointer;
+            transition: color 0.3s;
+            /* Smooth transition for color change */
+        }
+
+        .wishlistButton input[type="checkbox"]:checked+label {
+            color: #e2264d;
+            /* Change color when checked */
+            filter: none;
+            /* Remove grayscale when checked */
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +75,6 @@
             </ul>
 
             <ul class="menu-bar">
-
                 <li id="totalPrice">&#36;0.00</li>
                 <li><i class='fas fa-shopping-cart'></i></li>
                 <li><span id="totalArticles">(0)</span></li>
@@ -341,6 +377,8 @@
 
 
 </body>
+<script src="./js/script.js"></script>
 <script src="./js/products.js"></script>
+<!-- <script type="module" src="./js/details.js"></script> -->
 
 </html>

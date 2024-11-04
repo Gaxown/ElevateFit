@@ -7,6 +7,6 @@ SmallImgs.forEach(img => {
     ProductImg.src = e.target.src 
   }) 
 })
-document.querySelector('.menu-bar').addEventListener('click', (e) => {
+document.querySelector('ul.menu-bar').addEventListener('click', (e) => {
     window.location.href = "/cart.html"
 })
