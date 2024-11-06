@@ -15,23 +15,17 @@ let index = 0
 let tax = parseFloat(taxHTML.textContent.slice(1))
 cartProducts.forEach(product => {
     let quantity = parseInt(cart[index++].quantity)
-    cartHTML.innerHTML += `
-    <tr>
-        <td>
-            <img alt="${product.title}" height="100" src=${product.img} width="100">
-            <div>
-                ${product.title}
-                <br>
-                Price: $${product.price.toFixed(2)}
-                <br>
-                <span class="remove">Remove</span>
-            </div>
-        </td>
-        <td>
-            <input type="number" value="${quantity}">
-        </td>
-        <td>$${(parseFloat(product.price) * quantity).toFixed(2)}</td>
-    </tr>`
+    cartHTML.innerHTML += 
+    `<div class="wishlist-item">
+                        <img src="${product.img}" alt="${product.title}" class="wishlist-item-image">
+                        <div class="wishlist-item-details">
+                            <h2 class="wishlist-item-title">${product.title}</h2>
+                            <p class="wishlist-item-price">$${product.price.toFixed(2)}</p>
+                            <button class="remove-button" data-id="${product.id}">Remove from Cart</button>
+                            <input type="number" value="${quantity}">
+                            <p>$${(parseFloat(product.price) * quantity).toFixed(2)}</p>
+                        </div>
+                    </div>`
 });
 
 subTotalHTML.textContent = `$${totalPrice.toFixed(2)}`

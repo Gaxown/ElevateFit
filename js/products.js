@@ -1,22 +1,11 @@
-// import { addToCartLocalStorage } from './details.js';
- 
-// products = document.querySelectorAll('.card');
-// productArray = []
-let index = 0
 
-//dataextracted from the  original webiste
-// data = '[{"id":1,"img":"http://127.0.0.1:5503/images/Nike/product%201/product.png","title":"Red Printed T-shirt","category":"Men","price":250,"stars":2.5},{"id":2,"img":"http://127.0.0.1:5503/images/Nike/product%202/product.png","title":"TEST","category":"Women","price":100,"stars":4.5},{"id":3,"img":"http://127.0.0.1:5503/images/Nike/product%203/product.png","title":"Red Printed T-shirt","category":"Men","price":200,"stars":4.5},{"id":4,"img":"http://127.0.0.1:5503/images/Nike/product%204/product.png","title":"Red Printed T-shirt","category":"Women","price":1459,"stars":4.5},{"id":5,"img":"http://127.0.0.1:5503/images/Nike/product%205/product.png","title":"Red Printed T-shirt","category":"Men","price":1119,"stars":4},{"id":6,"img":"http://127.0.0.1:5503/images/Nike/product%206/product.png","title":"Red Printed T-shirt","category":"Men","price":750,"stars":4},{"id":7,"img":"http://127.0.0.1:5503/images/Nike/product%207/product.png","title":"Red Printed T-shirt","category":"Women","price":460,"stars":3.5},{"id":8,"img":"http://127.0.0.1:5503/images/Nike/product%208/product.png","title":"Red Printed T-shirt","category":"Men","price":1299,"stars":4.5},{"id":9,"img":"http://127.0.0.1:5503/images/Nike/product%209/product.png","title":"Red Printed T-shirt","category":"Men","price":200,"stars":4},{"id":10,"img":"http://127.0.0.1:5503/images/Nike/product%2010/product.png","title":"Red Printed T-shirt","category":"Men","price":430,"stars":4},{"id":11,"img":"http://127.0.0.1:5503/images/Nike/product%2011/product.png","title":"Red Printed T-shirt","category":"Men","price":600,"stars":3.5},{"id":12,"img":"http://127.0.0.1:5503/images/Nike/product%2012/product.png","title":"Red Printed T-shirt","category":"Men","price":959,"stars":4.5}]'
-// Data with multiple categories
 const data = '[{"id":1,"img":"http://127.0.0.1:5503/images/Nike/product%201/product.png","title":"Red Printed T-shirt","categories":["Men", "Airforce"],"price":250,"stars":2.5},{"id":2,"img":"http://127.0.0.1:5503/images/Nike/product%202/product.png","title":"TEST","categories":["Women", "Dunk"],"price":100,"stars":4.5},{"id":3,"img":"http://127.0.0.1:5503/images/Nike/product%203/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":200,"stars":4.5},{"id":4,"img":"http://127.0.0.1:5503/images/Nike/product%204/product.png","title":"Red Printed T-shirt","categories":["Women", "Airforce"],"price":1459,"stars":4.5},{"id":5,"img":"http://127.0.0.1:5503/images/Nike/product%205/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":1119,"stars":4},{"id":6,"img":"http://127.0.0.1:5503/images/Nike/product%206/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":750,"stars":4},{"id":7,"img":"http://127.0.0.1:5503/images/Nike/product%207/product.png","title":"Red Printed T-shirt","categories":["Women", "Airforce"],"price":460,"stars":3.5},{"id":8,"img":"http://127.0.0.1:5503/images/Nike/product%208/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":1299,"stars":4.5},{"id":9,"img":"http://127.0.0.1:5503/images/Nike/product%209/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":200,"stars":4},{"id":10,"img":"http://127.0.0.1:5503/images/Nike/product%2010/product.png","title":"Red Printed T-shirt","categories":["Men", "Airforce"],"price":430,"stars":4},{"id":11,"img":"http://127.0.0.1:5503/images/Nike/product%2011/product.png","title":"Red Printed T-shirt","categories":["Men", "Dunk"],"price":600,"stars":3.5},{"id":12,"img":"http://127.0.0.1:5503/images/Nike/product%2012/product.png","title":"Red Printed T-shirt","categories":["Men", "Pegasus"],"price":959,"stars":4.5}]'
 
 localStorage.setItem("productDetails", data)
 
-/** */
-let totalPrice = parseFloat(localStorage.getItem('totalPrice')).toFixed(2)
-let previousCartPrice = localStorage.getItem('totalPrice') ? totalPrice : 0
-// totalArticles = localStorage.getItem('totalArticles') ? parseInt(localStorage.getItem('totalArticles')) : 0
-let totalArticles = parseInt(localStorage.getItem('totalArticles')) || 0; // Initialize total articles
-let cartItems = JSON.parse(localStorage.getItem('cart') || '[]')
+
+
+
 document.querySelector('#totalPrice').innerHTML = `$${previousCartPrice}`
 document.querySelector('#totalArticles').innerHTML = `(${totalArticles})`
 
@@ -47,157 +36,23 @@ getCategory = () => {
 }
 
 
-
-
-
-
-// Update the renderProducts function to accept filtered products
-// function renderProducts(SortingParameter = 'default', min = 0, max = 5000, products = null) {
-//     if (products === null) {
-//         products = JSON.parse(data);
-//     }
-// }
-
-
-/** 
-addToCartHandling = () => {
-    const buyButtons = document.querySelectorAll('.buy');
-    const removeButtons = document.querySelectorAll('.remove');
-    const bottomElements = document.querySelectorAll('.bottom');
-    
-
-    buyButtons.forEach((buyButton, index) => {
-        buyButton.addEventListener('click', () => {
-            bottomElements[index].classList.add('clicked');
-            const product = products[index];
-            productId =  product.id;
-            totalPrice = localStorage.getItem('totalPrice') ? parseFloat(localStorage.getItem('totalPrice')) : 0
-            totalPrice +=  parseFloat(product.price);
-
-            const cartItem = cartItems.find(item => item.id == productId)
-            if (cartItem) {
-                quantity = parseInt(cartItem.quantity) + 1
-                cartItem.quantity = quantity.toString()
-            }
-            else 
-                cartItems.push({ id: productId.toString(), quantity: '1' });
-            document.querySelector('#totalArticles').innerHTML = `(${++totalArticles})`
-            document.querySelector('#totalPrice').innerHTML = `$${totalPrice}`
-            localStorage.setItem('totalPrice',  JSON.stringify(totalPrice))
-            localStorage.setItem('totalArticles',  JSON.stringify(totalArticles))
-            localStorage.setItem('cart',  JSON.stringify(cartItems))
-        });
-    });
-    
-    removeButtons.forEach((removeButton, index) => {
-        removeButton.addEventListener('click', () => {
-            bottomElements[index].classList.remove('clicked');
-            id =  index + 1 
-            const product = products.find(product => product.id == id)
-            console.log(product)
-            const cartItem = cartItems.find(item => item.id == product.id)
-            quantity = parseInt(cartItem.quantity) - 1
-            if (quantity == 0) {
-                console.log(cartItems)
-                cartItems.splice(cartItems.indexOf(cartItem), 1)
-            }
-            else 
-                cartItem.quantity = quantity.toString()
-            console.log(cartItems)
-            localStorage.setItem('cart',  JSON.stringify(cartItems))
-        });
-    });
-}
-
-/** */
-
-/**
- * 
-
-addToCartHandling = () => {
-    const buyButtons = document.querySelectorAll('.buy');
-    const removeButtons = document.querySelectorAll('.remove');
-    const bottomElements = document.querySelectorAll('.bottom');
-
-    buyButtons.forEach((buyButton, index) => {
-        buyButton.addEventListener('click', () => {
-            bottomElements[index].classList.add('clicked');
-            const product = products[index];
-            const productId = product.id;
-            let totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0; // Default to 0 if not set
-            totalPrice += parseFloat(product.price); // Add the product price
-
-            const cartItem = cartItems.find(item => item.id == productId);
-            if (cartItem) {
-                let quantity = parseInt(cartItem.quantity) + 1;
-                cartItem.quantity = quantity.toString();
-            } else {
-                cartItems.push({ id: productId.toString(), quantity: '1' });
-            }
-
-            // Update total articles
-            totalArticles++;
-            document.querySelector('#totalArticles').innerHTML = `(${totalArticles})`;
-            document.querySelector('#totalPrice').innerHTML = `$${totalPrice.toFixed(2)}`; // Update UI
-
-            // Store updated values in local storage
-            localStorage.setItem('totalPrice', totalPrice.toFixed(2)); // Store total price as a string
-            localStorage.setItem('totalArticles', totalArticles.toString()); // Store total articles as a string
-            localStorage.setItem('cart', JSON.stringify(cartItems)); // Store cart items
-        });
-    });
-
-    removeButtons.forEach((removeButton, index) => {
-        removeButton.addEventListener('click', () => {
-            bottomElements[index].classList.remove('clicked');
-            const product = products[index];
-            const cartItem = cartItems.find(item => item.id == product.id);
-            if (cartItem) {
-                let quantity = parseInt(cartItem.quantity) - 1;
-                if (quantity <= 0) {
-                    cartItems.splice(cartItems.indexOf(cartItem), 1); // Remove item from cart
-                } else {
-                    cartItem.quantity = quantity.toString(); // Update quantity
-                }
-            }
-
-            // Update total price and articles
-            let totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0; // Default to 0 if not set
-            totalPrice -= parseFloat(product.price); // Subtract the product price
-            totalArticles--; // Decrement total articles
-
-            // Update UI
-            document.querySelector('#totalArticles').innerHTML = `(${totalArticles})`;
-            document.querySelector('#totalPrice').innerHTML = `$${totalPrice.toFixed(2)}`; // Update UI
-
-            // Store updated values in local storage
-            localStorage.setItem('totalPrice', totalPrice.toFixed(2)); // Store total price as a string
-            localStorage.setItem('totalArticles', totalArticles.toString()); // Store total articles as a string
-            localStorage.setItem('cart', JSON.stringify(cartItems)); // Store cart items
-        });
-    });
-}
- */
-
-totalArticles = parseInt(localStorage.getItem('totalArticles')) || 0; // Initialize total articles
-cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart items from local storage
+totalArticles = parseInt(localStorage.getItem('totalArticles')) || 0;
+cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
 const addToCartHandling = () => {
     const buyButtons = document.querySelectorAll('.buy');
     const removeButtons = document.querySelectorAll('.remove');
     const bottomElements = document.querySelectorAll('.bottom');
 
-    // Initialize totalPrice and totalArticles from local storage
-    let totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0;
-    let totalArticles = parseInt(localStorage.getItem('totalArticles')) || 0;
+    totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0;
+    totalArticles = parseInt(localStorage.getItem('totalArticles')) || 0;
 
     buyButtons.forEach((buyButton, index) => {
         buyButton.addEventListener('click', () => {
             bottomElements[index].classList.add('clicked');
-            const product = products[index]; // Assuming `products` is defined and contains your product data
+            const product = products[index];
             const productId = product.id;
 
-            // Add product price to totalPrice
             totalPrice += parseFloat(product.price);
 
             const cartItem = cartItems.find(item => item.id == productId);
@@ -220,58 +75,44 @@ const addToCartHandling = () => {
     removeButtons.forEach((removeButton, index) => {
         removeButton.addEventListener('click', () => {
             bottomElements[index].classList.remove('clicked');
-            const product = products[index]; // Get the product associated with the remove button
-            const cartItemIndex = cartItems.findIndex(item => item.id == product.id); // Find the index of the cart item
+            const product = products[index]; 
+            const cartItemIndex = cartItems.findIndex(item => item.id == product.id); 
 
             if (cartItemIndex !== -1) {
-                const cartItem = cartItems[cartItemIndex]; // Get the cart item
+                const cartItem = cartItems[cartItemIndex]; 
                 const itemPrice = parseFloat(product.price);
                 const itemQuantity = parseInt(cartItem.quantity);
 
-                // Subtract the total price of the item from totalPrice
+                
                 totalPrice -= itemPrice * itemQuantity; 
-                totalArticles -= itemQuantity; // Decrement total articles by the quantity
+                totalArticles -= itemQuantity;
 
-                cartItems.splice(cartItemIndex, 1); // Remove the item from the cart
+                cartItems.splice(cartItemIndex, 1); 
             }
 
-            // Ensure totalPrice and totalArticles are not negative
+            
             totalPrice = Math.max(totalPrice, 0);
             totalArticles = Math.max(totalArticles, 0);
 
-            // Update UI
-            updateUI(totalArticles, totalPrice); // Update UI with new totals
+            updateUI(totalArticles, totalPrice); 
 
-            // Store updated values in local storage
             saveToLocalStorage(totalPrice, totalArticles, cartItems);
         });
     });
 }
 
-// Function to update the UI
 const updateUI = (totalArticles, totalPrice) => {
     document.querySelector('#totalArticles').innerHTML = `(${totalArticles})`;
-    document.querySelector('#totalPrice').innerHTML = `$${totalPrice.toFixed(2)}`; // Update UI
+    document.querySelector('#totalPrice').innerHTML = `$${totalPrice.toFixed(2)}`; 
 }
 
-// Function to save updated values to local storage
 const saveToLocalStorage = (totalPrice, totalArticles, cartItems) => {
-    localStorage.setItem('totalPrice', totalPrice.toFixed(2)); // Store total price as a string
-    localStorage.setItem('totalArticles', totalArticles.toString()); // Store total articles as a string
-    localStorage.setItem('cart', JSON.stringify(cartItems)); // Store cart items
+    localStorage.setItem('totalPrice', totalPrice.toFixed(2)); 
+    localStorage.setItem('totalArticles', totalArticles.toString()); 
+    localStorage.setItem('cart', JSON.stringify(cartItems)); 
 }
 
-// Call the function to set up event listeners
 addToCartHandling();
-
-// Example usage
-// To add an item
-// addToCartHandling('add', productId, quantityValue);
-
-// To remove an item
-// addToCartHandling('remove', productId);
-
-//
 
 function renderProducts(SortingParameter = 'default', category = 'All', min = 0,  max = 3000) {
     products = JSON.parse(data)
@@ -297,32 +138,21 @@ function renderProducts(SortingParameter = 'default', category = 'All', min = 0,
     const totalStars = 5; 
     let starsHtml = '';
 
-    // Add full stars
+    // full strs
     for (let i = 0; i < fullStars; i++) {
         starsHtml += '<i class="fa fa-star" aria-hidden="true"></i>';
     }
 
-    // Add half star if existing
+    // half star if existing
     if (hasHalfStar) {
         starsHtml += '<i class="fa fa-star-half-o" aria-hidden="true"></i>';
     }
 
-    // Add empty stars
+    // empty starss
     const emptyStars = totalStars - fullStars - (hasHalfStar ? 1 : 0);
     for (let i = 0; i < emptyStars; i++) {
         starsHtml += '<i class="fa fa-star-o" aria-hidden="true"></i>';
     }
-
-    // Append the product card with stars
-
-    // container.innerHTML += `
-    //     <div class="card col-4">
-    //         <img class="productImg" id="${elem.id}" src="${elem.img}">
-    //         <h4 class="productTitle">${elem.title}</h4>
-    //         <div class="rating">${starsHtml}</div>
-    //         <div class="price">$${elem.price}</div>
-    //     </div>
-    // `;
     const item = cartItems.find(item => item.id == elem.id)
     container.innerHTML += `<div class="wrapper" id="${elem.id}">
         <div class="container" style="padding:0">
@@ -378,9 +208,8 @@ function renderProducts(SortingParameter = 'default', category = 'All', min = 0,
                 </div>
             </div>
         </div>
-        <div class="inside">
-            <div class="icon">
-                <?xml version="1.0" encoding="UTF-8"?>
+        <div class="inside" id="layer-${elem.id}">
+            <div class="icon" id="layer-${elem.id}">
                 <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="30"
                     height="30">
                     <path
@@ -398,95 +227,35 @@ function renderProducts(SortingParameter = 'default', category = 'All', min = 0,
     document.querySelectorAll('.productTitle').forEach(card => card.addEventListener('click', (e) => {
     let productId = e.target.id;
     localStorage.setItem('productId', productId)
-    window.location.href = "product-detail.html"    // let product = JSON.parse(data).find(product => product.id == productId);
+    window.location.href = "product-detail.html"    
+    // let product = JSON.parse(data).find(product => product.id == productId);
+    // console.log(product);
+}));    
+    document.querySelectorAll('.inside').forEach(card => card.addEventListener('click', (e) => {
+        console.log(e.target)
+    let productId = e.target.id;
+    localStorage.setItem('productId', productId)
+    // window.location.href = "product-detail.html"    
+    // let product = JSON.parse(data).find(product => product.id == productId);
     // console.log(product);
 }));
 });
 }
 
-/* 
-function renderProducts(SortingParameter = 'default', category = 'All', min = 0, max = 5000) {
-    container = document.querySelector('#products-container')
-    products = JSON.parse(data)
-    SortingParameter = getSortingParameter()
-    //Category & Price Range
-    filtered = products.filter(product => {
-        let categories = product.category.split(' ');
-        let hasCategory = false;
-        if (category === 'All') {
-            hasCategory = true;
-        } else if (category === 'Men') {
-            hasCategory = categories.includes('Men') && categories.includes('Nike');
-        } else if (category === 'Women') {
-            hasCategory = categories.includes('Women') && categories.includes('Nike');
-        }
-        return product.price >= min && product.price <= max && hasCategory;
-    })
 
-    if (SortingParameter == 'reviews')
-        filtered.sort((a, b) => b.stars - a.stars)
-    else if (SortingParameter == 'price'){
-        filtered.sort((a, b) => b.price - a.price)
-    }
-
-    console.log(`parameter: ${SortingParameter}`)
-    console.log(`min: ${min} || max = ${max}`)
-    console.log(`category: ${category}`)
-    console.log(filtered.map(x => x.price))
-
-
- 
-    container.innerHTML = ''
-    filtered.forEach(elem => {
-    const fullStars = Math.floor(elem.stars);
-    const hasHalfStar = elem.stars % 1 !== 0; 
-    const totalStars = 5; 
-    let starsHtml = '';
-
-    // Add full stars
-    for (let i = 0; i < fullStars; i++) {
-        starsHtml += '<i class="fa fa-star" aria-hidden="true"></i>';
-    }
-
-    // Add half star if existing
-    if (hasHalfStar) {
-        starsHtml += '<i class="fa fa-star-half-o" aria-hidden="true"></i>';
-    }
-
-    // Add empty stars
-    const emptyStars = totalStars - fullStars - (hasHalfStar ? 1 : 0);
-    for (let i = 0; i < emptyStars; i++) {
-        starsHtml += '<i class="fa fa-star-o" aria-hidden="true"></i>';
-    }
-
-    // Append the product card with stars
-    container.innerHTML += `
-        <div class="card col-4">
-            <img class="productImg" id="${elem.id}" src="${elem.img}">
-            <h4 class="productTitle">${elem.title}</h4>
-            <div class="rating">${starsHtml}</div>
-            <div class="rating">$${elem.price}</div>
-        </div>
-    `;
-});
-}
-*/
 function priceSlider() {
 const rangevalue = 
     document.querySelector(".slider-container .price-slider");
 const rangeInputvalue = 
     document.querySelectorAll(".range-input input");
 
-// Set the price gap
 let priceGap = 500;
 
-// Adding event listners to price input elements
 const priceInputvalue = 
     document.querySelectorAll(".price-input input");
 for (let i = 0; i < priceInputvalue.length; i++) {
     priceInputvalue[i].addEventListener("input", e => {
 
-        // Parse min and max values of the range input
         let minp = parseInt(priceInputvalue[0].value);
         let maxp = parseInt(priceInputvalue[1].value);
         let diff = maxp - minp
@@ -497,7 +266,6 @@ for (let i = 0; i < priceInputvalue.length; i++) {
             minp = 0;
         }
 
-        // Validate the input values
         if (maxp > 5000) {
             alert("maximum price cannot be greater than 5000");
             priceInputvalue[1].value = 5000;
@@ -514,8 +282,6 @@ for (let i = 0; i < priceInputvalue.length; i++) {
             }
         }
 
-        // Check if the price gap is met 
-        // and max price is within the range
         if (diff >= priceGap && maxp <= rangeInputvalue[1].max) {
             if (e.target.className === "min-input") {
                 rangeInputvalue[0].value = minp;
@@ -531,7 +297,6 @@ for (let i = 0; i < priceInputvalue.length; i++) {
         }
     });
 
-    // Add event listeners to range input elements
     for (let i = 0; i < rangeInputvalue.length; i++) {
         rangeInputvalue[i].addEventListener("input", e => {
             let minVal = 
@@ -541,10 +306,8 @@ for (let i = 0; i < priceInputvalue.length; i++) {
 
             let diff = maxVal - minVal
             
-            // Check if the price gap is exceeded
             if (diff < priceGap) {
             
-                // Check if the input is the min range input
                 if (e.target.className === "min-range") {
                     rangeInputvalue[0].value = maxVal - priceGap;
                 }
@@ -554,7 +317,6 @@ for (let i = 0; i < priceInputvalue.length; i++) {
             }
             else {
             
-                // Update price inputs and range progress
                 priceInputvalue[0].value = minVal;
                 priceInputvalue[1].value = maxVal;
                 rangevalue.style.left =
@@ -602,113 +364,34 @@ document.querySelector('#filter').addEventListener('change', (e) => {
         renderProducts(option, category,range.min, range.max)  
     })
 
-// Product  Details
-
-
-
-
-
-// Heart Animation 
-
-// document.querySelector('.heart').addEventListener('click',  (e) => e.target.toggle("is-active"))
-
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const wishlistButtons = document.querySelectorAll('.wishlistButton');
-
-//     wishlistButtons.forEach(button => {
-//         const checkbox = button.querySelector('input[type="checkbox"]');
-//         const label = button.querySelector('label');
-
-//         checkbox.addEventListener('change', () => {
-//             // Change the color of the clicked heart
-//             if (checkbox.checked) {
-//                 label.style.color = '#e2264d';
-//                 console.log(e.target.id)
-//                 console.log("dsfskjdfkl")
-//             } else {
-//                 label.style.color = '#888';
-//             }
-//         });
-//     });
-// });
 
 document.addEventListener('DOMContentLoaded', () => {
     const wishlistButtons = document.querySelectorAll('.wishlistButton');
-    let selectedItems = JSON.parse(localStorage.getItem('wishlistItems')) || []; // Retrieve existing items from localStorage
+    let selectedItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
     wishlistButtons.forEach(button => {
         const checkbox = button.querySelector('input[type="checkbox"]');
         const label = button.querySelector('label');
-        const productId = parseInt(button.closest('.wrapper').id); // Get the product ID
+        const productId = parseInt(button.closest('.wrapper').id);
 
-        // Check if the product is already in the wishlist
         if (selectedItems.includes(productId)) {
-            checkbox.checked = true; // Set checkbox to checked if already in wishlist
-            label.style.color = '#e2264d'; // Set label color to red
+            checkbox.checked = true; 
+            label.style.color = '#e2264d';
         }
 
         checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
-                label.style.color = '#e2264d'; // Change color to red
+                label.style.color = '#e2264d';
                 if (!selectedItems.includes(productId)) {
-                    selectedItems.push(productId); // Add product ID to the array
+                    selectedItems.push(productId); 
                 }
             } else {
-                label.style.color = '#888'; // Reset color if unchecked
-                selectedItems = selectedItems.filter(id => id !== productId); // Remove product ID from the array
+                label.style.color = '#888';
+                selectedItems = selectedItems.filter(id => id !== productId); 
             }
 
-            // Save the updated array to localStorage
             localStorage.setItem('wishlistItems', JSON.stringify(selectedItems));
         });
     });
 });
 
-
-
-
-// //-----JS for Price Range slider-----
-
-// document.querySelector(function() {
-// 	document.querySelector( "#slider-range" ).slider({
-// 	  range: true,
-// 	  min: 130,
-// 	  max: 500,
-// 	  values: [ 130, 250 ],
-// 	  slide: function( event, ui ) {
-// 		document.querySelector( "#amount" ).val( "document.querySelector" + ui.values[ 0 ] + " - document.querySelector" + ui.values[ 1 ] );
-// 	  }
-// 	});
-// 	document.querySelector( "#amount" ).val( "document.querySelector" + document.querySelector( "#slider-range" ).slider( "values", 0 ) +
-// 	  " - document.querySelector" + document.querySelector( "#slider-range" ).slider( "values", 1 ) );
-// });
-
-
-
-
-/** */
-// document.querySelectorAll('.buy').forEach(card => card.addEventListener('click', (e) =>
-//     document.closest('.bottom').classList.add("clicked")))
-
-// document.querySelectorAll('.remove').forEach(card => card.addEventListener('click', (e) =>
-//     document.closest('.bottom').classList.remove("clicked")))
-
-
-
-
-// document.querySelectorAll('.remove').addEventListener('click', (e) =>
-//     document.querySelector('.bottom').classList.remove("clicked"))
-
-
-/* 
-
-$('.buy').click(function(){
-    $('.bottom').addClass("clicked");
-});
-
-$('.remove').click(function(){
-    $('.bottom').removeClass("clicked");
-});
-*/

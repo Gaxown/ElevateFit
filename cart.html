@@ -3,6 +3,9 @@
 <head>
     <title>Shopping Cart</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/banner.css">
+    <link rel="stylesheet" href="./css/wishlist.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -280,31 +283,32 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/banner.css">
+
 </head>
 
 <body>
-    <header style="background: none; height: fit-content;">
+    <!--making header-->
+    <header style="background: none;height: auto;">
 
         <nav id="nav">
 
-            <img src="images/logo-white.png" class="logo">
+            <img src="images/logo-white.png" class="logo" style="margin: 0;">
 
             <ul class="menu-bar-side">
-                <li><a href="index.html" style=" all: unset;">Home</a></li>
+                <li><a href="./index.html" style=" all: unset;">Home</a></li>
                 <li><a href="Products.html" style=" all: unset;">Shop</a></li>
                 <li><a href="#" style=" all: unset;">about</a></li>
                 <li><a href="#" style=" all: unset;">contact us</a></li>
             </ul>
 
-            <ul class="menu-bar">
-                <li id="totalPrice">&#36;0.00</li>
+            <ul class="menu-bar" style="margin-right: 65px;">
+                <li id="totalPrice" style="margin: 0;">&#36;0.00</li>
                 <li><i class='fas fa-shopping-cart'></i></li>
+                <li><span id="totalArticles">(0)</span></li>
 
             </ul>
             <div id="menu-button">
-                <i class="fa fa-bars"></i>
+                <i class="fa fa-bars" style="right: 25px;"></i>
             </div>
         </nav>
         <!-- Side Bar -->
@@ -337,6 +341,7 @@
         <div id="overlay" class="overlay"></div>
 
     </header>
+    <!--- end header --->
     <div class="container">
         <table class="cart-table">
             <thead>
@@ -458,19 +463,20 @@
                 cartHTML.innerHTML += `
                     <tr>
                         <td>
-                            <img alt="${product.title}" height="100" src="${product.img}" width="100">
+                            <img alt="${product.title}" style="width:100%; height:fit-content" src="${product.img}">
                             <div>
                                 ${product.title}
                                 <br>
-                                Price: $${product.price.toFixed(2)}
+                                Unit Price: $${product.price.toFixed(2)}
+                                <br>                                Total: $${itemTotal.toFixed(2)}
                                 <br>
-                                <span class="remove" data-id="${product.id}">Remove</span>
+                                <input class="quantity" type="number" value="${quantity}" min="1" onchange="updateQuantity('${product.id}', this.value)">
+                                <br>
+                                <button class=" remove remove-button" data-id="${product.id}" style="color:white">Remove from Cart</button>
+                                <!--<span class="remove" data-id="${product.id}">Remove</span>-->
                             </div>
                         </td>
-                        <td>
-                            <input type="number" value="${quantity}" min="1" onchange="updateQuantity('${product.id}', this.value)">
-                        </td>
-                        <td>$${itemTotal.toFixed(2)}</td>
+                        <td>${product.title}</td>
                     </tr>`;
             }
         });

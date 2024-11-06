@@ -55,14 +55,17 @@ h1 {
 
 .wishlist-container {
     display: flex;
-    flex-direction: column;
-    gap: 20px; /* Space between wishlist items */
+    /* flex-direction: column; */
 }
 
 .wishlist-item {
     display: flex;
     align-items: center;
     border: 1px solid #e0e0e0;
+    /* border: 1px solid #000; */
+    /* width: 45%; */
+    margin-right: 30px;
+    margin-bottom: 15px;
     border-radius: 5px;
     padding: 15px;
     background-color: #fff;
@@ -70,7 +73,7 @@ h1 {
 }
 
 .wishlist-item-image {
-    width: 100px; /* Fixed width for images */
+    width: 40%; /* Fixed width for images */
     height: auto; /* Maintain aspect ratio */
     margin-right: 20px; /* Space between image and details */
 }
@@ -139,4 +142,13 @@ h1 {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+/*  */
+.quantity {
+    width: 75px;
+    height: 30px;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 16px;
 }

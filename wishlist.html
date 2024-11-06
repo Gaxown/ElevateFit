@@ -11,23 +11,15 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/banner.css">
     <style>
-        .none {
-            display: none;
-        }
-
-        header {
-            height: 85px;
-        }
-
         /* Side Bar */
         .sidebar {
-            transform: translate(100%, 37px);
+            transform: translateX(100%);
             /* transform: translateY(37px); */
             transition: transform 0.3s ease;
         }
 
         .sidebar.open {
-            transform: translate(0, 37px);
+            transform: translateX(0);
         }
 
         .overlay {
@@ -77,7 +69,7 @@
         .sidebar {
             position: fixed;
             right: 0;
-            top: 3rem;
+            /* top: 3rem; */
             padding: 0;
             /* padding-top: 3.5rem; */
             width: 16rem;
@@ -100,13 +92,15 @@
             }
 
             #menu-button {
+                /* position: absolute; */
+                right: 30px;
                 display: block;
                 /* Show the menu button */
             }
 
             /* .menu-bar {
-                display: flex;
-            } */
+                    display: flex;
+                } */
         }
 
         /* For larger screens */
@@ -116,43 +110,54 @@
                 /* Hide the menu button */
             }
         }
+
+        /* For larger screens */
+        @media (max-width: 1024px) {
+            #menu-bar-side {
+                position: relative;
+                right: 200px;
+                /* Hide the menu button */
+            }
+        }
     </style>
 </head>
 
 <body>
     <!--making header-->
-    <header>
+    <header style="background:none; height: auto;">
 
         <nav id="nav">
 
-            <img src="images/logo-white.png" class="logo">
+            <img src="images/logo-white.png" class="logo" style="margin: 0;">
 
             <ul class="menu-bar-side">
-                <li><a href="index.html" style=" all: unset;">Home</a></li>
+                <li><a href="./index.html" style=" all: unset;">Home</a></li>
                 <li><a href="Products.html" style=" all: unset;">Shop</a></li>
+                <li><a href="./wishlist.html" style=" all: unset;">wishlist</a></li>
                 <li><a href="#" style=" all: unset;">about</a></li>
                 <li><a href="#" style=" all: unset;">contact us</a></li>
             </ul>
 
-            <ul class="menu-bar">
-                <li id="totalPrice">&#36;0.00</li>
+            <ul class="menu-bar" style="margin-right: 65px;">
+                <li id="totalPrice" style="margin: 0;">&#36;0.00</li>
                 <li><i class='fas fa-shopping-cart'></i></li>
+                <li><span id="totalArticles">(0)</span></li>
 
             </ul>
             <div id="menu-button">
-                <i class="fa fa-bars"></i>
+                <i class="fa fa-bars" style="right: 25px;"></i>
             </div>
         </nav>
         <!-- Side Bar -->
         <div id="sidebar" class="sidebar">
             <div class=" menu">
-                <a href="#about" class="link">
+                <a href="./index.html" class="link">
                     <img class="icon" src="./images/svgs/home.svg" alt="">
                     Home
                 </a>
                 <a href="./wishlist.html" class="link">
                     <img class="icon" src="./images/svgs/heart.svg" alt="">
-                    Home
+                    Wish List
                 </a>
                 <a href="#about" class="link">
                     <img class="icon" src="./images/svgs/about.svg" alt="">
@@ -162,7 +167,7 @@
                     <img class="icon" src="./images/svgs/contact.svg" alt="">
                     Contact
                 </a>
-                <a href="./pages/login.html" class="link">
+                <a href="./sign-up.html" class="link">
                     <img class="icon" src="./images/svgs/login.svg" alt="">
                     Login & SignUp
                 </a>
@@ -171,6 +176,8 @@
 
         <!-- Overlay -->
         <div id="overlay" class="overlay"></div>
+
+        </div>
 
     </header>
     <!--- end header --->

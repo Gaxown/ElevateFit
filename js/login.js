@@ -1,11 +1,8 @@
 document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-
-    // Clear previous error messages
+    event.preventDefault(); 
     document.getElementById('email-error').textContent = '';
     document.getElementById('password-error').textContent = '';
 
-    // Get form values
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
@@ -22,8 +19,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         return;
     }
 
-    // For demonstration, we'll just log the values to the console
     console.log('Email:', email);
     console.log('Password:', password);
-    alert('Login successful!'); // Remove this in production
+    alert('Login successful!'); 
 });
